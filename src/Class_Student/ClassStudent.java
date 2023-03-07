@@ -115,6 +115,11 @@ public class ClassStudent {
         do {
             System.out.print("Nhập tên sinh viên: ");
             this.studentName = sc.nextLine();
+            if (this.studentName.length() < 5) {
+                System.out.println("tên không được dưới 5 ký tự, mời nhập lại.");
+            } else if (this.studentName.length() > 50) {
+                System.out.println("tên không được quá 50 ký tự, mời nhập lại.");
+            }
         } while (this.studentName.length() < 5 || this.studentName.length() > 50);
 
         // tuổi
@@ -177,10 +182,11 @@ public class ClassStudent {
         int day = Year.now().getValue();
         System.out.printf("%s%-20s%s%s", "Mã sinh viên: ", studentId, "Tên sinh viên: ", studentName);
         System.out.printf("%s%-24d%s%-20s%s%s", "\nNăm sinh: ", (day - age), "Giới tính: ", gender, "Điện thoại: ", phone);
-        System.out.printf("%s%-56s%s%f", "\nĐịa chỉ: ", address, "Điểm Trung Bình: ", avgMark());
+        System.out.printf("%s%-56s%s%f", "\nĐịa chỉ: ", address, "Điểm Trung Bình: ", avgMark);
     }
 
-    public float avgMark() {
-        return (html + css + 2 * javascript) / 4;
+    public void avgMark() {
+        float avhMark = (html + css + 2 * javascript) / 4;
+        this.avgMark = avhMark;
     }
 }
